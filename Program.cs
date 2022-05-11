@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyIF.Data;
+using MyIF.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<MyIFContext>(
         ServerVersion.AutoDetect( builder.Configuration.GetConnectionString("ConnectDb"))
     )
 );
+
+builder.Services.AddScoped<CourseService>();
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
